@@ -1,13 +1,17 @@
 {
   "name": "microtail",
   "version": "0.0.1",
-  "description": "",
-  "main": "index.js",
-  "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
-  },
+  "description": "HTTP microservice for easily and safely mapping Unix `tail` commands on your server to authenticated public URLs.",
+  "main": "lib/index.js",
   "author": "",
   "license": "MIT",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node ./bin/microtail"
+  },
+  "bin": {
+    "microtail": "./bin/microtail"
+  },
   "dependencies": {
     "microcule": "^6.0.0",
     "resource-http": "^1.2.0"

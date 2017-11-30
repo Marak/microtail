@@ -9,7 +9,8 @@ module.exports = function (opts, cb) {
   }
   var tailHandler = microcule.plugins.spawn({
     bin: 'tail',
-    argv: ['-n', '500', opts.tailPath]
+    argv: ['-n', '500', opts.tailPath],
+    redirectStderrToStdout: true
   });
   tailHandler(req, res, function(){
     return res.end('');
