@@ -1,6 +1,6 @@
 {
   "name": "microtail",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "description": "HTTP microservice for easily and safely mapping Unix `tail` commands on your server to authenticated public URLs.",
   "main": "lib/index.js",
   "author": "",
@@ -14,6 +14,6 @@
   },
   "dependencies": {
     "microcule": "^6.0.0",
-    "resource-http": "^1.2.0"
+    "resource-http": "^1.3.0"
   }
 }
