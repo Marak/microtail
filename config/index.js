@@ -1,12 +1,18 @@
 var config = {};
-
 var fs = require('fs');
 var path = require('path');
 
 config.http = {
   key: fs.readFileSync(__dirname + '/../ssl/key.txt').toString(),
   cert: fs.readFileSync(__dirname + '/../ssl/crt.txt').toString(),
-  https: true
+  https: true,
+  port: 8888,
+  auth: {
+    basicAuth: {
+      username: 'admin',
+      password: 'admin'
+    }
+  }
 }
 
 config.tails = [{
