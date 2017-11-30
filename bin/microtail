@@ -1,0 +1,2 @@
+var microtail = require('../lib');
+microtail.start();
