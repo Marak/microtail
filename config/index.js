@@ -6,6 +6,7 @@ config.http = {
   key: fs.readFileSync(__dirname + '/../ssl/key.txt').toString(),
   cert: fs.readFileSync(__dirname + '/../ssl/crt.txt').toString(),
   https: true,
+  host: '0.0.0.0',
   port: 8888,
   auth: {
     basicAuth: {

@@ -7,12 +7,24 @@ module.exports = function (opts, cb) {
   if (typeof opts.tailPath === 'undefined') {
     return res.end('invalid tail path');
   }
-  var tailHandler = microcule.plugins.spawn({
-    bin: 'tail',
-    argv: ['-n', '500', opts.tailPath],
-    redirectStderrToStdout: true
-  });
-  tailHandler(req, res, function(){
-    return res.end('');
-  })
+  if (process.platform === "darwin") {
+    //
+    // On MacOS / Unix systems, tail command comes with `-r` switch for reversing order of results
+    //
+    var tailHandler = microcule.plugins.spawn({
+      bin: 'tail',
+      argv: ['-r', '-n', '500', opts.tailPath],
+      redirectStderrToStdout: true
+    });
+  } else {
+    //
+    // For non-unix systems, assume linux and pipe to `tac` command to reverse results
+    //
+    var tailHandler = microcule.plugins.spawn({
+      bin: 'sh',
+      argv: ['-c', 'tail -n 500 ' + opts.tailPath + ' | tac'],
+      redirectStderrToStdout: true
+    });
+  }
+  tailHandler(req, res);
 };
